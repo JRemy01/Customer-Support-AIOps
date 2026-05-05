@@ -1,0 +1,39 @@
+# .github/workflows/retrain.yml
+
+name: Retrain Model
+
+on:
+    push:
+        branches: main
+        paths:
+            - 'ml/**'
+
+env:
+    AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+    AZURE_WORKSPACE_NAME: ${{ secrets.AZURE_WORKSPACE_NAME }}
+
+jobs:
+    retrain:
+        runs-on: ubuntu-latest
+
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name : Set up python
+              uses: actions/setup-python@v4
+              with:
+                python-version: 3.11
+
+            - name: install dependencies
+              run: pip install -r requirements.txt
+
+            - name : run training script
+              run:  python ml/src/train.py
+
+            - name: log success
+              run: echo "Model retrained and logged successfully!"
+
+            
