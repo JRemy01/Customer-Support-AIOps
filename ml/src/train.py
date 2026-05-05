@@ -1,5 +1,5 @@
 # Training a support ticket classifier with MLflow tracking
-# trigger: retraining
+# trigger: retraining/ new credentials
 
 import pandas as pd
 import mlflow
