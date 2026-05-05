@@ -2,7 +2,7 @@
 # trigger: retraining
 
 import pandas as pd
-import mlflows
+import mlflow
 import mlflow.sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
